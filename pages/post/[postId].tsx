@@ -93,7 +93,7 @@ toast.success('Comment created!', {id: notification,
               <div key={comment.id} className="relative flex items-center space-x-2 space-y-5" >
                 <hr className='absolute top-10 left-7 z-0 h-16 border' />
                 <div className='z-50' >
-                  <Avatar seed={comment?.username}/>
+                  <Avatar />
 
                 </div>
                 <div className='flex flex-col'>
