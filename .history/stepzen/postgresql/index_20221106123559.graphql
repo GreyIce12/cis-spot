@@ -1,0 +1,248 @@
+type Channels {
+  created_at: DateTime
+  id: ID!
+  postList: [Post] @materializer(query: "getPostUsingChannel_id")
+  topic: String
+}
+
+type Comments {
+  comment: String
+  created_at: DateTime
+  id: ID!
+  post: Post
+    @materializer(
+      query: "getPost"
+      arguments: [{ name: "id", field: "post_id" }]
+    )
+  post_id: ID
+  username: String
+}
+
+type Post {
+  body: String
+  channel_id: ID
+  channels: Channels
+    @materializer(
+      query: "getChannels"
+      arguments: [{ name: "id", field: "channel_id" }]
+    )
+  commentsList: [Comments] @materializer(query: "getCommentsUsingPost_id")
+  created_at: DateTime
+  id: ID!
+  image: String
+  title: String
+  username: String
+  votesList: [Votes] @materializer(query: "getVotesUsingPost_id")
+}
+
+type Votes {
+  created_at: DateTime
+  id: ID!
+  post: Post
+    @materializer(
+      query: "getPost"
+      arguments: [{ name: "id", field: "post_id" }]
+    )
+  post_id: ID
+  upvote: Boolean
+  username: String
+}
+
+"""
+These are some examples of queries generated from the schema. Feel free to modify them or add your own.
+"""
+type Query {
+  getChannelsList: [Channels]
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "Channels"
+      configuration: "postgresql_config"
+    )
+    getChannelsListByTopic(topic: String!): [Channels]
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      query: """ select * from "Channels" where topic = $1
+ """
+      configuration: "postgresql_config"
+    )
+
+     getChannelsListById(id: ID!): [Channels]
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      query: """ select * from "Channels" where "id" = $1
+ """
+      configuration: "postgresql_config"
+    )
+  getChannels(id: ID!): Channels
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "Channels"
+      configuration: "postgresql_config"
+    )
+  getPostUsingChannel_id(id: ID!): [Post]
+    @dbquery(
+      type: "postgresql"
+     table: "Channels"
+      configuration: "postgresql_config"
+    )
+  getCommentsList: [Comments]
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "comments"
+      configuration: "postgresql_config"
+    )
+  getComments(id: ID!): Comments
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "comments"
+      configuration: "postgresql_config"
+    )
+  getPostList: [Post]
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "post"
+      configuration: "postgresql_config"
+    )
+  getPost(id: ID!): Post
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "post"
+      configuration: "postgresql_config"
+    )
+  getCommentsUsingPost_id(id: ID!): [Comments]
+    @dbquery(
+      type: "postgresql"
+      query: """
+      SELECT T."comment", T."created_at", T."id", T."post_id", T."username"
+        FROM "public"."comments" T
+        WHERE T."post_id" = $1
+      """
+      configuration: "postgresql_config"
+    )
+  getVotesUsingPost_id(id: ID!): [Votes]
+    @dbquery(
+      type: "postgresql"
+      query: """
+      SELECT T."created_at", T."id", T."post_id", T."upvote", T."username"
+        FROM "public"."votes" T
+        WHERE T."post_id" = $1
+      """
+      configuration: "postgresql_config"
+    )
+  getVotesList: [Votes]
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "votes"
+      configuration: "postgresql_config"
+    )
+  getVotes(id: ID!): Votes
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "votes"
+      configuration: "postgresql_config"
+    )
+}
+
+"""
+These are some examples of mutations generated from the schema. Feel free to modify them or add your own.
+"""
+type Mutation {
+  insertChannels(created_at: DateTime!, topic: String!): Channels
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "Channels"
+      dml: INSERT
+      configuration: "postgresql_config"
+    )
+    insertChannelsByTopic(topic: String!): Channels
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "Channels"
+      dml: INSERT
+      configuration: "postgresql_config"
+    )
+  deleteChannels(id: ID!): Channels
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "Channels"
+      dml: DELETE
+      configuration: "postgresql_config"
+    )
+  insertComments(
+    post_id: ID!
+    created_at: DateTime!
+    comment: String!
+    username: String!
+  ): Comments
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "comments"
+      dml: INSERT
+      configuration: "postgresql_config"
+    )
+  deleteComments(id: ID!): Comments
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "comments"
+      dml: DELETE
+      configuration: "postgresql_config"
+    )
+  insertPost(
+    image: String!
+    body: String!
+    channel_id: ID!
+    title: String!
+    username: String!
+  ): Post
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "post"
+      dml: INSERT
+      configuration: "postgresql_config"
+    )
+  deletePost(id: ID!): Post
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "post"
+      dml: DELETE
+      configuration: "postgresql_config"
+    )
+  insertVotes(
+    post_id: ID!
+    created_at: DateTime!
+    upvote: Boolean!
+    username: String!
+  ): Votes
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "votes"
+      dml: INSERT
+      configuration: "postgresql_config"
+    )
+  deleteVotes(id: ID!): Votes
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "votes"
+      dml: DELETE
+      configuration: "postgresql_config"
+    )
+}
