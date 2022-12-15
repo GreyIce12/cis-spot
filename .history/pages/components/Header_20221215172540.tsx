@@ -81,7 +81,11 @@ function Header({topic}: Props) {
                   <span className="sr-only ">Open user menu</span>
                   <Image
                     className=" rounded-full "
+<<<<<<< HEAD
                     src={session?.user?.image!} 
+=======
+                    src={session?.user?.image}
+>>>>>>> 52cfbc5aadb56b5703b2d24f1e1674224a419349
                     objectFit="contain"
                     width="50px"
                     height="50px"
