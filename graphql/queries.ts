@@ -1,0 +1,137 @@
+import { gql } from "@apollo/client";
+
+
+
+export const GET_POSTS_BY_ID = gql`
+
+query MyQuery($post_id: ID!) {
+
+  getPostListById(post_id: $post_id) {
+    body
+    channel_id
+    created_at
+    id
+    image
+    title
+    username
+    
+    channels {
+      created_at
+      id
+      topic
+    }
+    comments {
+      comment
+      username
+      post_id
+      created_at
+      id
+    }
+    votes {
+      created_at
+      id
+      upvote
+      username
+      post_id
+    }
+  }
+}
+`
+
+
+export const GET_POSTS = gql`
+
+query MyQuery {
+    getPostList {
+    body
+    channel_id
+    created_at
+    id
+    image
+    title
+    username
+    
+    channels {
+      created_at
+      id
+      topic
+    }
+    comments {
+      comment
+      username
+      post_id
+      created_at
+      id
+    }
+    votes {
+      created_at
+      id
+      upvote
+      username
+      post_id
+    }
+  }
+}
+`
+export const GET_CHANNEL_BY_TOPIC = gql`
+
+    query MyQuery($topic: String!){
+
+        getChannelsListByTopic(topic: $topic){
+            id
+            topic
+            created_at
+
+        }
+    }
+
+` 
+export const GET_VOTES_BY_POSTID = gql`
+
+    query MyQuery($post_id: ID!){
+
+      getVotesUsingPost_id(post_id: $post_id){
+            id
+            upvote
+            post_id
+            username
+            created_at
+
+        }
+    }
+
+` 
+export const GET_POSTS_BY_TOPIC = gql`
+
+query MyQuery($topic: String!) {
+  getPostListByTopic(topic: $topic) {
+    body
+    channel_id
+    created_at
+    id
+    image
+    title
+    username
+    
+    channels {
+      created_at
+      id
+      topic
+    }
+    comments {
+      comment
+      username
+      post_id
+      created_at
+      id
+    }
+    votes {
+      created_at
+      id
+      upvote
+      username
+      post_id
+    }
+  }
+}
+`
