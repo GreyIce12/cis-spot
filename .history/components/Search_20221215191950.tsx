@@ -1,5 +1,5 @@
 import React from 'react'
-import { GET_POSTS, GET_POSTS_BY_TOPIC } from '../graphql/queries'
+import { GET_POSTS, GET_POSTS_BY_TOPIC } from '../../graphql/queries'
 import { useQuery } from '@apollo/client'
 import {SubmitHandler, useForm} from 'react-hook-form'
 import toast from 'react-hot-toast';
