@@ -31,11 +31,11 @@ function Sidebar() {
 </a>
 </Link>
 
- <a href="http://localhost:3000/Innovations"> 
+ <a href="../Innovations"> 
 <SidebarOptions title="Tech Innovations" Icon={SignalCellularAltIcon}/>
 </a> 
 
-<a href="http://localhost:3000/Destress">
+<a href="../Destress">
 <SidebarOptions title="Destress" Icon={LibraryBooksIcon}/>
 </a>
 <SidebarOptions title="Program Gems" Icon={DiamondIcon}/>
@@ -45,7 +45,7 @@ function Sidebar() {
 <Link href="">
 <SidebarOptions title="F.A.Q." Icon={HelpIcon}/>
 </Link>
-<a href="http://localhost:3000/Contact">
+<a href="../Contact">
 <SidebarOptions title="Contact" Icon={MailIcon}/>
 </a>
 {

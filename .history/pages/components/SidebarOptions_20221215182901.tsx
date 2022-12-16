@@ -1,13 +1,6 @@
 import React from 'react'
 
-type Props = {
-  Icon: any,
-  title:string
-}
-
-
-
-function SidebarOptions({title, Icon}:Props) {
+function SidebarOptions({title, Icon}:{title: string , Icon: any}) {
   return (
 
     
@@ -18,4 +11,4 @@ function SidebarOptions({title, Icon}:Props) {
   )
 }
 
-export default SidebarOptions;
+export default SidebarOptions

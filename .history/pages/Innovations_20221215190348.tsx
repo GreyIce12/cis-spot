@@ -83,7 +83,7 @@ interface Value{
     </>
   )
 }
-export default Innovations;
+export default Innovations
 
 
 export async function getServerSideProps() {

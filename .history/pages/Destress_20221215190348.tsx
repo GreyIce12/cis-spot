@@ -74,7 +74,7 @@ interface Value{
     </>
   )
 }
-export default Destress;
+export default Destress
 
 
 export async function getServerSideProps() {

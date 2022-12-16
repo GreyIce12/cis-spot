@@ -121,4 +121,4 @@ toast.success('Comment created!', {id: notification,
   )
 }
 
-export default PostPage;
+export default PostPage
