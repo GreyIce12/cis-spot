@@ -9,7 +9,7 @@ import Sidebar from '../components/Sidebar';
 
 
 interface newValue {
-	
+	articles:[
 	key: any,
 	  _type: string,
 	  name: string,
@@ -20,7 +20,7 @@ interface newValue {
 	  date: string,
 	  thumbnmail:string,
 	  contentUrl:string,
-
+	]
 	
   }
 
@@ -58,7 +58,7 @@ const Home: NextPage<Value> = ({ value }) => {
 }
 
 
-
+export default Home;
 
  export async function getStaticProps() {
 	const res = await fetch('http://localhost:3000/api/news');
@@ -78,4 +78,4 @@ const Home: NextPage<Value> = ({ value }) => {
 	};
 	
 }
-export default Home;
+

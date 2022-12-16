@@ -8,7 +8,6 @@ import { ApolloProvider } from '@apollo/client';
 import { Toaster } from 'react-hot-toast';
 
 import client from '../apollo-client';
-import Header from '../components/Header';
 
 
 
@@ -17,7 +16,7 @@ function MyApp({ Component, pageProps }: AppProps<{ session: Session }> ){
   <ApolloProvider client={client} >
   <SessionProvider session={pageProps.session}>
     <Toaster/>
-  <Header/>
+  
   <Component {...pageProps} />
 </SessionProvider>
 </ApolloProvider>

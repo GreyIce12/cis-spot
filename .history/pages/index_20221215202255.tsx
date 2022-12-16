@@ -10,17 +10,17 @@ import Sidebar from '../components/Sidebar';
 
 interface newValue {
 	
-	key: any,
-	  _type: string,
-	  name: string,
-	  url: string,
-	  image: string,
-	  description: string,
-	  provider: [],
-	  date: string,
-	  thumbnmail:string,
-	  contentUrl:string,
-
+	  [key: string]: any;
+	  _type: string;
+	  name: string;
+	  url: string;
+	  image: string;
+	  description: string;
+	  provider: [];
+	  date: string;
+	  thumbnmail:string;
+	  contentUrl:string;
+	
 	
   }
 
@@ -58,9 +58,9 @@ const Home: NextPage<Value> = ({ value }) => {
 }
 
 
+export default Home;
 
-
- export async function getStaticProps() {
+ export async function getServerSideProps() {
 	const res = await fetch('http://localhost:3000/api/news');
 	const value = (await res.json()) as Value
 	
@@ -78,4 +78,4 @@ const Home: NextPage<Value> = ({ value }) => {
 	};
 	
 }
-export default Home;
+
