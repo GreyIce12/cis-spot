@@ -1,10 +1,9 @@
-import { isArray } from '@apollo/client/cache/inmemory/helpers';
-import { truncate } from 'fs';
+
 import React from 'react'
 import Banner from '../components/Banner';
 import Footer from '../components/Footer';
 import Sidebar from '../components/Sidebar';
-//import axios from 'axios';
+
 
 interface newValue {
 
