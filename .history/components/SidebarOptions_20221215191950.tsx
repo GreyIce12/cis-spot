@@ -1,6 +1,6 @@
 import React from 'react'
 
-function SidebarOptions({title, Icon}:{title?: string , Icon?: any}) {
+function SidebarOptions({title, Icon}:{title: string , Icon: any}) {
   return (
 
     
