@@ -1,10 +1,9 @@
 import { useRouter } from "next/router";
 import { stringify } from "querystring";
 import React from "react";
-import Avatar from "../../components/Avatar";
-import Feed from "../../components/Feed";
-import Post from "../../components/Post";
-
+import Avatar from "../components/Avatar";
+import Feed from "../components/Feed";
+import Post from "../components/Post";
 
 function Channel() {
   
@@ -17,7 +16,6 @@ function Channel() {
           <div className="-mt-5">
             <Avatar seed={topic as string} />
           </div>
-          
         
 
         <div className="py-2">

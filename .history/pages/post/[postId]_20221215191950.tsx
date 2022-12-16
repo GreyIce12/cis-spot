@@ -2,13 +2,13 @@ import React from 'react';
 import {useRouter} from 'next/router';
 import { GET_POSTS_BY_ID } from '../../graphql/queries'
 import {useQuery, useMutation} from '@apollo/client'
-import PostBox from '../../components/PostBox';
+import PostBox from '../components/PostBox';
 import { useSession } from 'next-auth/react';
 import {SubmitHandler, useForm} from 'react-hook-form'
 import { ADD_COMMENT } from '../../graphql/mutations';
 import toast from 'react-hot-toast';
 import { Avatar } from '@mui/material';
-import Sidebar from '../../components/Sidebar';
+import Sidebar from '../components/Sidebar';
 
 type FormData = {
   comment: string
