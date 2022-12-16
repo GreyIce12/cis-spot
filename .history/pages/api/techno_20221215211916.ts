@@ -13,15 +13,17 @@ export default async function handler(
       url: 'https://newscatcher.p.rapidapi.com/v1/latest_headlines',
       params: {lang: 'en', media: 'True', topic:"tech"},
       headers: {
-        'X-RapidAPI-Key':  process.env.API_KEY_CATCHER,
+        'X-RapidAPI-Key': 'ee2cdbac8bmsh280a945993f3a68p16649cjsn46fa2b70f671',
         'X-RapidAPI-Host': 'newscatcher.p.rapidapi.com'
       }
     };
 
-   await axios
+    await
+    axios
     .request(options)
     .then(function (response) {
-        const data = response.data;  
+        const data = response.data;
+        
         res.status(200).json(data);
     
     
@@ -30,6 +32,6 @@ export default async function handler(
         console.error(error);
     });
 } else {
-    res.status(400);
+res.status(400);
 }
 }

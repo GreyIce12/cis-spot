@@ -35,7 +35,7 @@ interface Value{
 			</div>
 			<div className="flex justify-center items-center  flex-wrap flex-col">
 				
-				 {value && Object.values(value).map((news:any, i) => {
+				 {value && Object.keys(value || {}).map((news:any, i) => {
 					return (
 						<Link className='cursor-pointer space-x-4 ' key={i} href={`${news?.url}`} prefetch={false} >
 							<div className=" top-2 flex items-center ml-2 transition ease-in-out delay-150 hover:bg-blue-100 rounded-lg hover:-translate-y-1  hover:scale-110  p-2 cursor-pointer space-x-2 md:w-80 md:h-40">
@@ -55,10 +55,10 @@ interface Value{
 	);
 
 }
-export default News;
 
 
-export async function getServerSideProps() {
+
+export async function getStaticProps() {
 	const res = await fetch('http://localhost:3000/api/news');
 	const value = (await res.json()) as Value
 	
@@ -78,3 +78,4 @@ export async function getServerSideProps() {
 }
 	
 
+export default News;

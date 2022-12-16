@@ -58,7 +58,7 @@ interface Value{
 export default News;
 
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
 	const res = await fetch('http://localhost:3000/api/news');
 	const value = (await res.json()) as Value
 	

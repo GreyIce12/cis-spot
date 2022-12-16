@@ -52,7 +52,7 @@ interface Value{
  <Banner img='https://images.pexels.com/photos/355948/pexels-photo-355948.jpeg?auto=compress&cs=tinysrgb&w=1600' topic='TECH INNOVATIONS' summary='The place where your mind over flows with new streams of Technology' />
   <div className='flex flex-wrap justify-evenly items-center  space-x-2' >
     
-    { value && Object.values(value.articles).slice(0,14).map((news:any , i) => {
+    { value && Object.values(value.articles).slice(0,14).map((news, i) => {
     return(
 <div key={news?.key}  className="max-w-sm transition ease-in-out delay-150 bg-blue-100 hover:-translate-y-1 hover:scale-110 hover:bg-gray-300 duration-300 border p-10 m-10 top-2 border-gray-200 rounded-lg shadow-md w-400 h-400 ">
     <a href={news?.link}>

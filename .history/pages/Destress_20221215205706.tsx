@@ -7,7 +7,7 @@ import Sidebar from '../components/Sidebar';
 //import axios from 'axios';
 
 interface newValue {
-	articles:[
+
 	
   key: any,
 	_id:string,
@@ -23,7 +23,7 @@ rights:string,
 summary:any,
 title:any,
 topic:any,
-  ]  
+  
 }
 
 interface Value{
@@ -47,7 +47,7 @@ interface Value{
  <Banner img='https://images.pexels.com/photos/3755761/pexels-photo-3755761.jpeg?auto=compress&cs=tinysrgb&w=1600' topic='Destress' summary='If you need a break, there many things to check out on this page, hobbies and Entertainment!'/>
   <div className='flex flex-wrap justify-evenly items-center space-x-2' >
 
-     {value && Object.values(value.articles).slice(0,19).map((news:any, i) => {
+     {value && Object.values(value ).slice(0,39).map((news:any, i)=> {
     return(
 <div key={i} className="max-w-sm border p-5 m-10 top-2 border-gray-200 rounded-lg shadow-md w-400 h-400 transition ease-in-out delay-150 hover:bg-gray-300 bg-blue-100 hover:-translate-y-1  hover:scale-110">
     <a href={news?.link}>
@@ -74,10 +74,10 @@ interface Value{
     </>
   )
 }
-export default Destress;
 
 
-export async function getServerSideProps() {
+
+export async function getStaticProps() {
 	const res = await fetch('http://localhost:3000/api/destress');
   const value = (await res.json()) as Value
 	
@@ -96,3 +96,4 @@ export async function getServerSideProps() {
 	};
 	
 }
+export default Destress;

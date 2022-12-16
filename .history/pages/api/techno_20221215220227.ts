@@ -10,7 +10,7 @@ export default async function handler(
   if (req.method === "GET") {
     var options = {
       method: "GET",
-      url: 'https://newscatcher.p.rapidapi.com/v1/latest_headlines',
+      url: 'https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=2badf7170944',
       params: {lang: 'en', media: 'True', topic:"tech"},
       headers: {
         'X-RapidAPI-Key':  process.env.API_KEY_CATCHER,
@@ -18,7 +18,7 @@ export default async function handler(
       }
     };
 
-   await axios
+    axios
     .request(options)
     .then(function (response) {
         const data = response.data;  
