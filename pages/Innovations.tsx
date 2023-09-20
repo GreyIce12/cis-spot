@@ -86,7 +86,7 @@ export default Innovations;
 
 async function getStaticProps() {
 	const res = await fetch('/api/techno');
-  const value = (await res.json()) as Value
+  const value = (await res.json.toString()) as Value
 	
   	
 	if (!value) {

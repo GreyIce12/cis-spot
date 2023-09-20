@@ -62,7 +62,7 @@ const Home: NextPage<Value> = ({ value }) => {
 
  export async function getStaticProps() {
 	const res = await fetch('http://localhost:3000/api/news');
-	const value = (await res.json()) as Value
+	const value = (await res.json.toString()) as Value
 	
 	if (!value) {
 		return {

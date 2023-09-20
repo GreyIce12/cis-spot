@@ -78,7 +78,7 @@ export default Destress;
 
 async function getStaticProps() {
 	const res = await fetch('/api/destress');
-  const value = (await res.json()) as Value
+  const value = (await res.json.toString()) as Value
 	
   	
 	if (!value) {
